@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+// import './index.css';
+import Home from './apecTravelApp/Home';
+import {apecEconomies} from './apecTravelApp/ApecEconomies'
+import MapHolder from './apecTravelApp/MapHolder'
+
 import reportWebVitals from './reportWebVitals';
+import 'tachyons'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="pa3">
+      <Home apecEconomies={apecEconomies}/>
+      <hr></hr>
+      <MapHolder/>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
