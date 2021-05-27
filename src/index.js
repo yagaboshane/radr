@@ -8,7 +8,7 @@ import 'tachyons'
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="pa3 serif">
+    <div className="pa4 serif">
       <App/>
     </div>
   </React.StrictMode>,

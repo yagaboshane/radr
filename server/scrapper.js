@@ -7,7 +7,7 @@ const tripsite = 'https://www.tripadvisor.com/Tourism-g294115-Papua_New_Guinea-V
 let countryList = []
 
 
-const apecEconomies = require('./apecEconomies(2)')
+const {apecEconomies} = require('./apecEconomies(2)')
 
 let het = [ 
     {
@@ -96,7 +96,7 @@ let het = [
     }    
 ]
 
-let apecData = []
+let results = []
 
 async function scrapeCovidLive(req, res){
     try{
@@ -104,7 +104,6 @@ async function scrapeCovidLive(req, res){
         const $ = await cheerio.load(htmlResult)
 
        $("#main_table_countries_today > tbody > tr").map((index, element)=>{
-
             const countryElement = $(element).find("td:nth-child(2)")
             const totalCasesElement = $(element).find("td:nth-child(3)")
             const totalDeathsElement = $(element).find("td:nth-child(5)")
@@ -121,16 +120,25 @@ async function scrapeCovidLive(req, res){
             const totalTests = $(totalTestsElement).text()
             const population = $(populationElement).text()
 
-            let results = {country, totalCases, totalDeaths, totalRecovered, activeCases, totalTests, population}
+            // let results = {country, totalCases, totalDeaths, totalRecovered, activeCases, totalTests, population}
                 
             for(i=0; i < apecEconomies.length ; i++){
                 if(country == apecEconomies[i].code){
-                    countryList.push(results)    
+
+                    let code = apecEconomies[i].code
+                    let id = apecEconomies[i].id
+                    let triplink = apecEconomies[i].tripLink
+                    let lng = apecEconomies[i].lng
+                    let lat = apecEconomies[i].lat
+
+                    let data = {country, code, id, triplink, lng, lat, totalCases, totalDeaths, totalRecovered, activeCases, totalTests, population}
+                    
+                    countryList.push(data)    
                 }
             }
         })
         console.log(countryList)
-
+        // return countryList
     } catch(err){
         console.log(err)
     }
@@ -143,16 +151,44 @@ async function travelDestinations(req, res){
 
         $('._19Yovgro > li > a').map((index,element)=>{
             let destination = ($(element).text())
-            let destUrl = ($(element).attr('href'))
             
-        })
-         
-        console.log(travelData)
+            var destUrl = ($(element).attr('href'))
+            var newUrl = 'https://www.tripadvisor.com'+ destUrl
         
+        console.log(destination)
+        console.log(newUrl)  
+
+        })
+        res.send(JSON.stringify($(data)))
     }catch(err){
         console.log(err);
     }
 }
+
+
+function bundler(){
+
+}
+
+//load economies2
+function feeder(){
+
+}
+
+async function collector(){
+    try{
+        scrapeCovidLive()
+        travelDestinations()
+        bundler()
+        feeder()
+
+
+    } catch(err){
+        console.log(err)
+    }
+}
+
+
 
 module.exports = {
     scrapeCovidLive,

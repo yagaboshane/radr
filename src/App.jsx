@@ -4,7 +4,7 @@ import Switch from "react-switch"
 import {apecEconomies} from './apecTravelApp/ApecEconomies'
 import MyMap from './apecTravelApp/map/googleMap'
 import axios from 'axios'
-
+import Scroll from './Scroll'
 
 class App extends React.Component {
     constructor() {
@@ -22,7 +22,8 @@ class App extends React.Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:8080/')
+        let data = axios.get('http://8080')
+        console.log(data)
 
         function getCoords() {
             return new Promise((resolve, reject) =>
@@ -69,29 +70,39 @@ class App extends React.Component {
 
     render(){
         return(
-            <div>
+            <div >
                 <div>
-                    <h1 className='f-headline lh-solid tc'>Radr</h1>
-                    <p className='f2 lh-copy tc'>Welcome to the official relevant APEC destinations radar! <br /> 
+                    <h1 locator={this.state.checked}  className='f-headline lh-solid tc'>Radr</h1>
+                    <p className='f2 lh-copy tc'>Welcome to the official <b> relevant APEC destinations radar</b>!  <br /> 
                         Please turn on your location to help us customize your experince.</p>
                     <label>
                         <span>Locate me</span> <br />
                         <Switch onChange={this.handleChange} checked={this.state.checked} />
                     </label>
                 </div>
+                <div  className='pv3'> </div>
                 <hr />
-                <Home apecEconomies={apecEconomies} 
-                locator={this.state.checked} 
-                />
-                
+                <div className='pv5'>
+                    <Scroll>
+                        <Home 
+                        apecEconomies={apecEconomies} 
+                        
+                        />
+                    </Scroll>
+                </div>
                 <hr></hr>
-                
-                <MyMap 
-                locator={this.state.checked} 
-                myLocation = {this.state.myLocation} 
-                lat = {this.state.lat}
-                lng= {this.state.lng}
-                />
+                <div className='pv5'>
+                    <MyMap 
+                    locator={this.state.checked} 
+                    myLocation = {this.state.myLocation} 
+                    lat = {this.state.lat}
+                    lng= {this.state.lng}
+                    />
+                    <hr></hr>                
+                </div>
+                <div className='pv3'>
+                <p className='tc'> <b> Developed by PNG Team Wan </b></p>
+                </div>
             </div>
         );
     }

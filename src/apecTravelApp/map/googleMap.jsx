@@ -12,11 +12,14 @@ const distanceToMouse = (pt, mp) => {
   }
 };
 
-let lat1
-let lon1
+//location
+let lat1 = 61.52401
+let lon1 = 105.318756
 
-let lat2
-let lon2
+//
+let lat2 = 25.274398 
+let lon2 = 133.775136
+
 
 const R = 6371; // metres
 const φ1 = lat1 * Math.PI/180; // φ, λ in radians
@@ -30,6 +33,7 @@ const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
 const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 const d = R * c; // in metres
+console.log('d si = ',d)
 
 const points = [
     { id: 1, title: "Russia", lng: 105.318756,lat: 61.52401 }, 
