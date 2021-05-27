@@ -9,8 +9,10 @@ function MapHolder() {
   const [content, setContent] = useState("");
   return (
     <div className="pv3">
-      <Map setTooltipContent={setContent} />
-      <ReactTooltip>{content}</ReactTooltip>
+      <div>
+        <Map setTooltipContent={setContent} />
+        <ReactTooltip>{content}</ReactTooltip>
+      </div>
     </div>
   );
 }

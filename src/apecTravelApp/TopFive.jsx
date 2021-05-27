@@ -7,7 +7,7 @@ const TopFive = ({flag, name})=>{
         <div className="bg-light-yellow dib br3 pa3 ma2 grow bw2 shadow-5">
             <img alt="flag" src={`https://www.countryflags.io/${flag}/flat/64.png`}/>
             <div>
-                <h2>{name}</h2>
+                <h2 className='f1 lh-title'>{name}</h2>
                 <p>png@png.com</p>
             </div>    
     
