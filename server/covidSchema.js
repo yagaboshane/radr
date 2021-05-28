@@ -1,33 +1,27 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var ProjectSchema = new Schema({
+var CovidSchema = new Schema({
     countryId: {
         type: Number,
         required: true,
         unique: true
     },
-    name: {
+    country: {
         type: String,
         required: true
     },
-    description: {
-        type: String,
+    totalCases: {
+        type: Number,
         required: true
     },
-    developers: [{
-       type: Schema.Types.ObjectId, ref: "users", required: true  //developers
-    }],
-    managers: [{
-      type: Schema.Types.ObjectId, ref: "users", required: true   //pm
-    }],
-    stardate: {
-        type: Date,
+    totalDeath: {
+        type: Number,
+        required: true
+    },    
+    totalRecoved: {
+        type: Number,
         required: true
     },
-    enddate: {
-      type: Date,
-      required: true
-  }
 });
 
-module.exports = mongoose.model("Project", ProjectSchema);
+module.exports = mongoose.model("Covid", CovidSchema);

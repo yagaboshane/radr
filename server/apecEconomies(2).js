@@ -11,8 +11,7 @@ let apecEconomies = [
         name:"Brunei",
         code: "Brunei ",
         id:"bn",
-	    tripLink:'https://www.tripadvisor.com/Tourism-g293937-Brunei_Darussalam-Vacations.html'
-        , lng: 114.727669, 	
+	    tripLink:'https://www.tripadvisor.com/Tourism-g293937-Brunei_Darussalam-Vacations.html',           lng: 114.727669, 	
         lat:4.535277
     }, 
     {
@@ -20,7 +19,7 @@ let apecEconomies = [
         code:"Canada",
         id:'ca',
 	    tripLink:'https://www.tripadvisor.com/Tourism-g153339-Canada-Vacations.html',
-        lng: 	-106.346771,
+        lng: -106.346771,
         lat: 56.130366
     }, 
     {

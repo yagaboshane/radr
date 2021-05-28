@@ -12,28 +12,6 @@ const distanceToMouse = (pt, mp) => {
   }
 };
 
-//location
-let lat1 = 61.52401
-let lon1 = 105.318756
-
-//
-let lat2 = 25.274398 
-let lon2 = 133.775136
-
-
-const R = 6371; // metres
-const φ1 = lat1 * Math.PI/180; // φ, λ in radians
-const φ2 = lat2 * Math.PI/180;
-const Δφ = (lat2-lat1) * Math.PI/180;
-const Δλ = (lon2-lon1) * Math.PI/180;
-
-const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-          Math.cos(φ1) * Math.cos(φ2) *
-          Math.sin(Δλ/2) * Math.sin(Δλ/2);
-const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-const d = R * c; // in metres
-console.log('d si = ',d)
 
 const points = [
     { id: 1, title: "Russia", lng: 105.318756,lat: 61.52401 }, 
@@ -79,7 +57,7 @@ export default function myMap() {
         {apecEconomies.map(({ lat, lng, id, name, }) => {
 
           return (
-            <MyMarker key={id} lat={lat} lng={lng} text={id} tooltip={name+"\n "+ "new test"} />
+            <MyMarker key={id} lat={lat} lng={lng} text={id} tooltip={name+"\n "+ "Economy data"} />
           );
         })}
       </GoogleMapReact>

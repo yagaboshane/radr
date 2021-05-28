@@ -3,11 +3,12 @@ const cors = require ('cors')
 const routesHandler = require('./routes/handler')
 
 
-const app = express()
+const app = express(),
+      bodyParser = require("body-parser");
+      port = 8080;
 
-const port = 8080;
-const controller = require("./scrapper");
 const cookieParser = require("cookie-parser");
+const controller = require("./scrapper");
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
