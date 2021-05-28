@@ -22,7 +22,7 @@ class App extends React.Component {
 
     componentDidMount() {
 
-        let data = axios.get('http://8080')
+        let data = axios.get('http://8080//destination')
         console.log(data)
 
         function getCoords() {
